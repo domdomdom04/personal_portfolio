@@ -1,0 +1,86 @@
+.arched-greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 480px;
+  overflow: visible;
+}
+
+.arched-greeting__wave {
+  position: relative;
+  width: 240px;
+  min-height: 58px;
+  padding: 12px 0 0;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.arched-greeting__letter {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: pre;
+  padding: 2px 1px;
+  overflow: visible;
+  animation: greeting-color-cycle 7s ease-in-out infinite;
+  animation-delay: calc(var(--letter-i) * 0.12s);
+}
+
+@keyframes greeting-color-cycle {
+  0%,
+  100% {
+    color: var(--arch-color);
+  }
+  25% {
+    color: #7a9bb8;
+  }
+  50% {
+    color: #ede4a8;
+  }
+  75% {
+    color: #ebc4d8;
+  }
+}
+
+.arched-greeting__bio {
+  margin-top: -6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.arched-greeting__bio p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+@media (max-width: 768px) {
+  .arched-greeting__wave {
+    transform: scale(0.9);
+    transform-origin: top center;
+  }
+
+  .arched-greeting__letter {
+    font-size: 18px;
+  }
+
+  .arched-greeting__bio p {
+    font-size: 0.875rem;
+    line-height: 1.12;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arched-greeting__letter {
+    animation: none;
+    color: var(--arch-color);
+  }
+}

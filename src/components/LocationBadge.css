@@ -1,0 +1,12 @@
+.location-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.location-badge svg {
+  opacity: 0.85;
+}

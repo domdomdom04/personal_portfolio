@@ -1,0 +1,205 @@
+.project-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-card__preview {
+  position: relative;
+  flex-shrink: 0;
+  height: 300px;
+  overflow: hidden;
+  background: #f4f4f4;
+}
+
+.project-mock {
+  width: 100%;
+  height: 100%;
+}
+
+/* Nini Cake */
+.project-mock--nini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-mock__nini-hero {
+  width: 72%;
+  max-width: 280px;
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.project-mock__nini-logo {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  letter-spacing: 0.14em;
+  color: #1a1a1a;
+}
+
+.project-mock__nini-cakes {
+  display: flex;
+  gap: 10px;
+}
+
+.project-mock__nini-cakes span {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f0e0d0;
+}
+
+.project-mock__nini-cakes span:nth-child(2) {
+  background: #e8d8e8;
+}
+
+.project-mock__nini-cakes span:nth-child(3) {
+  background: #ebe4d0;
+}
+
+/* Trade Me */
+.project-mock--trade-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.project-mock__trade-desktop,
+.project-mock__trade-mobile {
+  background: #fff;
+  border-radius: 2px;
+  padding: 8px;
+}
+
+.project-mock__trade-desktop {
+  width: 168px;
+}
+
+.project-mock__trade-mobile {
+  width: 68px;
+}
+
+.project-mock__trade-bar {
+  height: 5px;
+  margin-bottom: 6px;
+  background: #ececec;
+}
+
+.project-mock__trade-image {
+  height: 52px;
+  margin-bottom: 6px;
+  background: #d8cfc0;
+}
+
+.project-mock__trade-mobile .project-mock__trade-image {
+  height: 44px;
+}
+
+.project-mock__trade-desktop p,
+.project-mock__trade-mobile p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.5rem;
+  color: #4a4a4a;
+}
+
+/* Datacom */
+.project-mock--datacom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px 32px;
+}
+
+.project-mock__datacom-header {
+  height: 24px;
+  margin-bottom: 10px;
+  background: #1e3a56;
+}
+
+.project-mock__datacom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.project-mock__datacom-grid span {
+  height: 52px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Eden Park */
+.project-mock--eden {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px 32px;
+}
+
+.project-mock__eden-header {
+  padding: 7px 10px;
+  margin-bottom: 10px;
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  background: #1a8fc4;
+}
+
+.project-mock__eden-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.project-mock__eden-grid span {
+  height: 28px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.project-card__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0 0;
+  background: transparent;
+}
+
+.project-card__descriptor {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: var(--project-text, #1a1a1a);
+  line-height: 1.35;
+}
+
+.project-card__meta {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--project-meta, #b0b0b0);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .project-card__preview {
+    height: 260px;
+  }
+}

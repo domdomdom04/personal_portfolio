@@ -1,0 +1,17 @@
+.weather-widget {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.weather-widget svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.weather-widget__temp {
+  font-variant-numeric: tabular-nums;
+}

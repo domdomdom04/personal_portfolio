@@ -1,0 +1,27 @@
+.home .page-shell__main {
+  align-items: center;
+  justify-content: center;
+}
+
+.home__main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.home__greeting {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .home__main {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

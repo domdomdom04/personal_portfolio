@@ -1,0 +1,94 @@
+.pompompurin-sticker-anchor {
+  position: absolute;
+  left: clamp(12px, 4vw, 48px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.pompompurin-sticker {
+  position: relative;
+  flex-shrink: 0;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  transition: filter 0.2s ease;
+  will-change: transform;
+}
+
+.pompompurin-sticker--dragging {
+  cursor: grabbing;
+  z-index: 20;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.18));
+  transition: filter 0.1s ease;
+}
+
+.dark .pompompurin-sticker--dragging {
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.45));
+}
+
+.pompompurin-sticker__art {
+  margin: 0;
+  padding: 0;
+  font-family: "Menlo", "Consolas", "Monaco", monospace;
+  font-size: 5.5px;
+  line-height: 1.05;
+  letter-spacing: 0;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  pointer-events: none;
+  white-space: pre;
+}
+
+.dark .pompompurin-sticker__art {
+  opacity: 0.4;
+}
+
+.pompompurin-sticker__peel {
+  position: absolute;
+  bottom: 8%;
+  right: 6%;
+  width: 28px;
+  height: 28px;
+  border-radius: 0 0 100% 0;
+  background: linear-gradient(
+    135deg,
+    transparent 45%,
+    rgba(0, 0, 0, 0.06) 45%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.pompompurin-sticker--dragging .pompompurin-sticker__peel {
+  opacity: 1;
+  transform: scale(1) rotate(-8deg);
+}
+
+.dark .pompompurin-sticker__peel {
+  background: linear-gradient(
+    135deg,
+    transparent 45%,
+    rgba(255, 255, 255, 0.08) 45%,
+    rgba(255, 255, 255, 0.14) 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .pompompurin-sticker-anchor {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    align-self: center;
+    margin-bottom: 8px;
+  }
+
+  .pompompurin-sticker__art {
+    font-size: 4.5px;
+  }
+}
