@@ -1,0 +1,110 @@
+.fun-item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  max-width: min(90vw, 320px);
+  pointer-events: auto;
+}
+
+.fun-item--dragging {
+  cursor: grabbing;
+}
+
+.fun-item__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.fun-item__media {
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.dark .fun-item__media {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.fun-item__media--dragging {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16);
+  transform: scale(1.02);
+}
+
+.dark .fun-item__media--dragging {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+.fun-item__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.fun-item__media--youtube img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.fun-item__media--photo img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.fun-item__caption {
+  margin: 10px 0 0;
+  max-width: 240px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.fun-item__media--instagram {
+  background: transparent;
+}
+
+.fun-item__instagram-video {
+  aspect-ratio: 9 / 16;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.fun-item__instagram-video-el {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.fun-item__media--instagram .fun-item__instagram-video-el {
+  aspect-ratio: 9 / 16;
+}
+
+video.fun-item__instagram-video-el::-webkit-media-controls {
+  display: none !important;
+}
+
+video.fun-item__instagram-video-el::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+@media (max-width: 768px) {
+  .fun-item {
+    max-width: min(72vw, 260px);
+  }
+
+  .fun-item__caption {
+    font-size: 0.75rem;
+    max-width: 200px;
+  }
+}
