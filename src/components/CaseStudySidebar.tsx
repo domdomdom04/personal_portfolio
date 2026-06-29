@@ -10,12 +10,12 @@ export const CASE_STUDY_ACCENT_COLORS = ["#7a9bb8", "#ede4a8", "#ebc4d8"] as con
 
 type CaseStudySidebarProps = {
   items: CaseStudyNavItem[];
-  tryItYourselfHref?: string;
+  tryItYourselfHref?: string | null;
 };
 
 export function CaseStudySidebar({
   items,
-  tryItYourselfHref = "#try-it-yourself",
+  tryItYourselfHref = null,
 }: CaseStudySidebarProps) {
   const sectionIds = items.map((item) => item.id);
   const { activeId, scrollToSection } = useActiveSection(sectionIds);
@@ -56,20 +56,19 @@ export function CaseStudySidebar({
           })}
         </ul>
 
-        <a
-          href={tryItYourselfHref}
-          className="case-study-sidebar__cta"
-          onClick={(e) => {
-            if (!tryItYourselfHref.startsWith("#") || tryItYourselfHref === "#") {
-              if (tryItYourselfHref === "#") e.preventDefault();
-              return;
-            }
-            e.preventDefault();
-            scrollToSection(tryItYourselfHref.slice(1));
-          }}
-        >
-          try it yourself →
-        </a>
+        {tryItYourselfHref ? (
+          <a
+            href={tryItYourselfHref}
+            className="case-study-sidebar__cta"
+            onClick={(e) => {
+              if (!tryItYourselfHref.startsWith("#")) return;
+              e.preventDefault();
+              scrollToSection(tryItYourselfHref.slice(1));
+            }}
+          >
+            try it yourself →
+          </a>
+        ) : null}
       </nav>
     </aside>
   );

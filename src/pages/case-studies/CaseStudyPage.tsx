@@ -2,12 +2,12 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { CaseStudySidebar } from "../../components/CaseStudySidebar";
 import { LocationBadge } from "../../components/LocationBadge";
 import { ThemeToggle } from "../../components/ThemeToggle";
+import { UserFlowCard } from "../../components/UserFlowCard";
 import { WeatherWidget } from "../../components/WeatherWidget";
 import { PROJECTS } from "../../data/projects";
 import {
   CASE_STUDY_IMG,
   CASE_STUDY_NAV_ITEMS,
-  getCaseStudyBadgeLabel,
   getCaseStudyToolbarMeta,
 } from "./caseStudyShared";
 import "./CaseStudyPage.css";
@@ -26,6 +26,28 @@ function SectionLabel({
   );
 }
 
+function CaseStudyFeature({
+  title,
+  description,
+  imageSrc,
+  imageAlt,
+}: {
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+}) {
+  return (
+    <div className="cs-feature">
+      <SectionLabel>{title}</SectionLabel>
+      <p className="cs-section-desc">{description}</p>
+      <div className="cs-showcase">
+        <img src={imageSrc} alt={imageAlt} />
+      </div>
+    </div>
+  );
+}
+
 export function CaseStudyPage() {
   const { projectId } = useParams<{ projectId: string }>();
   const project = PROJECTS.find((entry) => entry.id === projectId);
@@ -35,11 +57,10 @@ export function CaseStudyPage() {
   }
 
   const toolbarMeta = getCaseStudyToolbarMeta(project.meta);
-  const badgeLabel = getCaseStudyBadgeLabel(project.meta, project.title);
 
   return (
     <div className="case-study">
-      <CaseStudySidebar items={[...CASE_STUDY_NAV_ITEMS]} tryItYourselfHref="#" />
+      <CaseStudySidebar items={[...CASE_STUDY_NAV_ITEMS]} />
 
       <div className="case-study__main">
         <header className="case-study__toolbar">
@@ -63,7 +84,7 @@ export function CaseStudyPage() {
 
             <div className="cs-hero__image-wrap">
               <img
-                src={`${CASE_STUDY_IMG}/final-design-hero.png`}
+                src={`${CASE_STUDY_IMG}/01-overview-hero.webp`}
                 alt={`${project.title} case study hero preview`}
                 className="cs-hero__image"
               />
@@ -128,8 +149,8 @@ export function CaseStudyPage() {
               </div>
               <div className="cs-split__media">
                 <img
-                  src={`${CASE_STUDY_IMG}/browse-gallery.png`}
-                  alt="Gallery of custom cake designs from Nini Cake"
+                  src={`${CASE_STUDY_IMG}/02-problem-space.webp`}
+                  alt="Baker assembling a custom cake in the kitchen"
                   className="cs-rounded-image"
                 />
               </div>
@@ -165,21 +186,17 @@ export function CaseStudyPage() {
               <li>real-time pricing feedback</li>
             </ul>
 
-            <div className="cs-flow-image">
-              <span className="cs-flow-badge">CURRENT USER FLOW</span>
-              <img
-                src={`${CASE_STUDY_IMG}/user-flow-current.png`}
-                alt="Flowchart showing the current Instagram-based ordering process"
-              />
-            </div>
+            <UserFlowCard
+              src={`${CASE_STUDY_IMG}/03-user-flow-current.webp`}
+              alt="Flowchart showing the current Instagram-based ordering process"
+              label="current user flow"
+            />
 
-            <div className="cs-flow-image">
-              <span className="cs-flow-badge">IMPROVED USER FLOW</span>
-              <img
-                src={`${CASE_STUDY_IMG}/user-flow-improved.png`}
-                alt="Flowchart showing the improved website-based ordering process"
-              />
-            </div>
+            <UserFlowCard
+              src={`${CASE_STUDY_IMG}/04-user-flow-improved.webp`}
+              alt="Flowchart showing the improved website-based ordering process"
+              label="improved user flow"
+            />
           </section>
 
           <section id="opportunity" className="cs-section">
@@ -237,62 +254,69 @@ export function CaseStudyPage() {
           <section id="final-design" className="cs-section">
             <div className="cs-final-header">
               <SectionLabel center>FINAL DESIGN</SectionLabel>
-              <span className="cs-final-badge">{badgeLabel}</span>
+              <img
+                src={`${CASE_STUDY_IMG}/05-logo.webp`}
+                alt="Nini Cake logo"
+                className="cs-final-logo"
+              />
               <p className="cs-lead">
                 Introducing a more intuitive and approachable cake ordering
                 experience
               </p>
             </div>
 
-            <div className="cs-showcase">
-              <img
-                src={`${CASE_STUDY_IMG}/final-design-hero.png`}
-                alt={`${project.title} homepage hero`}
-              />
+            <div className="cs-showcase cs-showcase--video">
+              <div className="cs-video-frame">
+                <video
+                  className="cs-showcase__video"
+                  src={`${CASE_STUDY_IMG}/final-design-video.mp4`}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-label={`${project.title} final design walkthrough`}
+                />
+              </div>
             </div>
 
-            <div className="cs-showcase">
-              <img
-                src={`${CASE_STUDY_IMG}/final-design-full.png`}
-                alt={`${project.title} full website design`}
-              />
-            </div>
+            <CaseStudyFeature
+              title="VISUAL AND ENGAGING HOMEPAGE"
+              description="Showcases cake designs through large imagery, reflecting the brand's creativity and personality"
+              imageSrc={`${CASE_STUDY_IMG}/06-final-design-hero.webp`}
+              imageAlt={`${project.title} homepage hero`}
+            />
+
+            <CaseStudyFeature
+              title="BROWSE AND GET INSPIRED"
+              description="A gallery of past designs helps customers explore styles and find inspiration"
+              imageSrc={`${CASE_STUDY_IMG}/07-final-design-full.webp`}
+              imageAlt={`${project.title} browse and inspiration gallery`}
+            />
+
+            <CaseStudyFeature
+              title="GUIDED CUSTOM ORDERING"
+              description="A structured flow allows users to select options and provide details in a clear and organised way"
+              imageSrc={`${CASE_STUDY_IMG}/08-browse-gallery.webp`}
+              imageAlt={`${project.title} custom ordering form`}
+            />
           </section>
 
-          <section id="browse" className="cs-section">
-            <SectionLabel>BROWSE AND GET INSPIRED</SectionLabel>
-            <p className="cs-section-desc">
-              A gallery of past designs helps customers explore styles and find
-              inspiration
-            </p>
+          <section id="ui-kit" className="cs-section">
+            <div className="cs-ui-kit-header">
+              <SectionLabel center>UI KIT / DESIGN SYSTEM</SectionLabel>
+            </div>
+
             <div className="cs-showcase">
               <img
-                src={`${CASE_STUDY_IMG}/browse-gallery.png`}
-                alt={`${project.title} shop page with product grid`}
+                src={`${CASE_STUDY_IMG}/09-guided-ordering.webp`}
+                alt={`${project.title} UI kit components`}
               />
             </div>
-          </section>
 
-          <section id="guided-ordering" className="cs-section">
-            <SectionLabel>GUIDED CUSTOM ORDERING</SectionLabel>
-            <p className="cs-section-desc">
-              A structured flow allows users to select options and provide
-              details in a clear and organised way
-            </p>
             <div className="cs-showcase">
               <img
-                src={`${CASE_STUDY_IMG}/guided-ordering.png`}
-                alt={`${project.title} custom ordering form`}
-              />
-            </div>
-          </section>
-
-          <section id="brand-ui" className="cs-section">
-            <SectionLabel>BRAND &amp; UI</SectionLabel>
-            <div className="cs-showcase">
-              <img
-                src={`${CASE_STUDY_IMG}/brand-ui.png`}
-                alt={`${project.title} brand identity`}
+                src={`${CASE_STUDY_IMG}/10-brand-ui-1.webp`}
+                alt={`${project.title} typography, colour palette, and brand elements`}
               />
             </div>
           </section>

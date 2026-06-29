@@ -4,13 +4,11 @@ export const CASE_STUDY_NAV_ITEMS = [
   { id: "user-flow", label: "User Flow" },
   { id: "opportunity", label: "Opportunity & Ideation" },
   { id: "final-design", label: "Final Design" },
-  { id: "browse", label: "Browse & Get Inspired" },
-  { id: "guided-ordering", label: "Guided Custom Ordering" },
-  { id: "brand-ui", label: "Brand & UI" },
+  { id: "ui-kit", label: "UI Kit / Design System" },
   { id: "reflection", label: "Reflection" },
 ] as const;
 
-/** Placeholder images until per-project assets are added. */
+/** Case study images live under public/case-study/nini-cake. */
 export const CASE_STUDY_IMG = "/case-study/nini-cake";
 
 export function getCaseStudyToolbarMeta(meta: string): string {

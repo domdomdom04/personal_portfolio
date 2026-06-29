@@ -10,16 +10,14 @@ type ProjectCardProps = {
 
 function NiniCakeMock() {
   return (
-    <div className="project-mock project-mock--nini">
-      <div className="project-mock__nini-hero">
-        <span className="project-mock__nini-logo">NINI CAKE</span>
-        <div className="project-mock__nini-cakes" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
-      </div>
-    </div>
+    <img
+      className="project-mock__nini-cover"
+      src="/projects/nini-cake-cover.png"
+      srcSet="/projects/nini-cake-cover.png 1024w, /projects/nini-cake-cover@2x.webp 2048w"
+      sizes="(max-width: 768px) 92vw, 444px"
+      alt="Nini Cake website homepage preview"
+      draggable={false}
+    />
   );
 }
 
