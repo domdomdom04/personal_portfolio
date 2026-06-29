@@ -1,4 +1,6 @@
 import { Link, Navigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { createPortal } from "react-dom";
 import { CaseStudySidebar } from "../../components/CaseStudySidebar";
 import { LocationBadge } from "../../components/LocationBadge";
 import { ThemeToggle } from "../../components/ThemeToggle";
@@ -45,6 +47,69 @@ function CaseStudyFeature({
         <img src={imageSrc} alt={imageAlt} />
       </div>
     </div>
+  );
+}
+
+function MetaFigmaTool() {
+  const [hovering, setHovering] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const tooltip =
+    hovering &&
+    createPortal(
+      <span
+        className="hover-tooltip"
+        style={{ left: mousePos.x + 18, top: mousePos.y + 18 }}
+      >
+        figma
+      </span>,
+      document.body
+    );
+
+  return (
+    <>
+      <span
+        className="cs-meta__tool"
+        onPointerEnter={(e) => {
+          setHovering(true);
+          setMousePos({ x: e.clientX, y: e.clientY });
+        }}
+        onPointerMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
+        onPointerLeave={() => setHovering(false)}
+        role="img"
+        aria-label="Figma"
+      >
+        <svg
+          className="cs-meta__figma-logo"
+          viewBox="0 0 38 57"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M19 28.5c0-5.247 4.253-9.5 9.5-9.5S38 23.253 38 28.5 33.747 38 28.5 38 19 33.747 19 28.5Z"
+            fill="#1ABCFE"
+          />
+          <path
+            d="M0 47.5C0 42.253 4.253 38 9.5 38H19v9.5c0 5.247-4.253 9.5-9.5 9.5S0 52.747 0 47.5Z"
+            fill="#0ACF83"
+          />
+          <path
+            d="M0 28.5C0 23.253 4.253 19 9.5 19H19v19H9.5C4.253 38 0 33.747 0 28.5Z"
+            fill="#A259FF"
+          />
+          <path
+            d="M0 9.5C0 4.253 4.253 0 9.5 0H19v19H9.5C4.253 19 0 14.747 0 9.5Z"
+            fill="#F24E1E"
+          />
+          <path
+            d="M19 0h9.5c5.247 0 9.5 4.253 9.5 9.5s-4.253 9.5-9.5 9.5H19V0Z"
+            fill="#FF7262"
+          />
+        </svg>
+      </span>
+      {tooltip}
+    </>
   );
 }
 
@@ -95,16 +160,23 @@ export function CaseStudyPage() {
                 <span className="cs-meta__label">TEAM</span>
                 <p>Just Janna :P</p>
               </div>
-              <div className="cs-meta__item">
+              <div className="cs-meta__item cs-meta__item--timeline">
                 <span className="cs-meta__label">TIMELINE</span>
-                <p>11th January 25&apos; – 3rd February 25&apos; (23 days)</p>
+                <p>
+                  11th January 25&apos; –<br />
+                  3rd February 25&apos; (23 days)
+                </p>
               </div>
-              <div className="cs-meta__item">
+              <div className="cs-meta__item cs-meta__item--role">
                 <span className="cs-meta__label">ROLE</span>
                 <p>
                   I designed the end-to-end experience, focusing on browsing,
                   enquiry flow, and overall UI design.
                 </p>
+              </div>
+              <div className="cs-meta__item">
+                <span className="cs-meta__label">TOOLS</span>
+                <MetaFigmaTool />
               </div>
             </div>
 

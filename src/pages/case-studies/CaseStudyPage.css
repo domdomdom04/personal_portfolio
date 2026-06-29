@@ -171,12 +171,25 @@
 }
 
 .cs-meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px 52px;
   width: 100%;
   margin-bottom: 64px;
   text-align: left;
+}
+
+.cs-meta__item {
+  flex: 0 0 auto;
+}
+
+.cs-meta__item--timeline {
+  max-width: 13.5rem;
+}
+
+.cs-meta__item--role {
+  max-width: 15.5rem;
 }
 
 .cs-meta__label {
@@ -195,6 +208,18 @@
   font-size: 0.9375rem;
   line-height: 1.55;
   color: var(--cs-text);
+}
+
+.cs-meta__tool {
+  display: inline-flex;
+  align-items: center;
+  cursor: default;
+}
+
+.cs-meta__figma-logo {
+  display: block;
+  width: 16px;
+  height: auto;
 }
 
 .cs-prose {
@@ -416,8 +441,7 @@ p.cs-label,
   }
 
   .cs-meta {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 20px 40px;
   }
 
   .cs-split {
@@ -433,5 +457,10 @@ p.cs-label,
   .case-study__toolbar {
     grid-template-columns: auto 1fr auto;
     gap: 8px;
+  }
+
+  .cs-meta {
+    flex-direction: column;
+    gap: 20px;
   }
 }
